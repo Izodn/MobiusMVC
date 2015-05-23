@@ -2,19 +2,34 @@
 namespace Mobius\Components\Router;
 
 use Mobius\Components\Router\Route;
-use Mobius\Components\Controller;
 
+/**
+ * A collection of routes
+ */
 class RouteCollection
 {
 	private $routes = [];
 
 	public function __construct() {}
 
-	public function add($method, $path, Controller $controller) {
-		$this->routes[] = new Route($method, $path, $controller);
+	/**
+	 * Add a route to the collection
+	 *
+	 * @param Route $route A route to handle
+	 */
+	public function add(Route $route) {
+		$this->routes[] = $route;
 	}
 
-	public function run($method, $path) {
+	/**
+	 * Handle a request
+	 *
+	 * @param string $method The request method to handle
+	 * @param string $path The url path to handle
+	 * @todo handle() should be passed a request object, maybe even return a
+	 *		response object
+	 */
+	public function handle($method, $path) {
 		foreach ($this->routes as $route) {
 			if ($method === $route->method && $path === $route->path) {
 				$route->controller->run();

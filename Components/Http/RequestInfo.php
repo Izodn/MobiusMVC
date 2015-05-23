@@ -1,6 +1,11 @@
 <?php
 namespace Mobius\Components\Http;
 
+/**
+ * Provides request info as static
+ *
+ * @todo Deprecate this with request objects
+ */
 class RequestInfo
 {
 	static function requestPath() {
