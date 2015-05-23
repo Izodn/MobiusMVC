@@ -7,7 +7,7 @@ namespace Mobius\Interfaces\Http;
 interface Request
 {
 	/**
-	 * Create the BaseRequest
+	 * Create the Request
 	 *
 	 * @param string $method The HTTP method of the request
 	 * @param string $path The url path of the request

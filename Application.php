@@ -5,6 +5,7 @@ use Mobius\Components\Router\RouteCollection;
 use Mobius\Components\Http\RequestInfo;
 use Mobius\Interfaces\Http\Request;
 use Mobius\Components\Http\Requests\BasicRequest;
+use Mobius\Interfaces\Http\Response;
 
 /**
  * An applicaiton container
@@ -37,10 +38,22 @@ class Application
 	}
 
 	/**
+	 * Send a response to the client
+	 *
+	 * @param Response $response The response to send
+	 */
+	public function respond(Response $response) {
+		http_response_code($response->getCode());
+		header("Content-Type:" . $response->getContentType());
+		echo $response->getData();
+	}
+
+	/**
 	 * Start the application
 	 * @todo This method should handle requests and responses
 	 */
 	public function run() {
-		$this->routes->handle($this->generateRequest());
+		$response = $this->routes->handle($this->generateRequest());
+		$this->respond($response);
 	}
 }

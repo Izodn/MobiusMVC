@@ -13,6 +13,7 @@ interface Controller
 
 	/**
 	 * Run the controller. This is the main entry point for controllers
+	 * @return Response A response to send to the client
 	 */
 	public function run();
 }
