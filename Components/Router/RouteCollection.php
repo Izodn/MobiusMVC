@@ -2,6 +2,7 @@
 namespace Mobius\Components\Router;
 
 use Mobius\Components\Router\Route;
+use Mobius\Interfaces\Http\Request;
 
 /**
  * A collection of routes
@@ -24,14 +25,11 @@ class RouteCollection
 	/**
 	 * Handle a request
 	 *
-	 * @param string $method The request method to handle
-	 * @param string $path The url path to handle
-	 * @todo handle() should be passed a request object, maybe even return a
-	 *		response object
+	 * @param Request $request The request to handle
 	 */
-	public function handle($method, $path) {
+	public function handle(Request $request) {
 		foreach ($this->routes as $route) {
-			if ($method === $route->method && $path === $route->path) {
+			if ($request->getMethod() === $route->method && $request->getPath() === $route->path) {
 				$route->controller->run();
 			}
 		}
