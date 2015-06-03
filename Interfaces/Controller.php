@@ -17,7 +17,6 @@ interface Controller
 	 * Run the controller. This is the main entry point for controllers
 	 *
 	 * @param Request $request The request to handle
-	 * @return Response A response to send to the client
 	 */
 	public function run(Request $request);
 }

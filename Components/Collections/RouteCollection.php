@@ -3,7 +3,6 @@ namespace Mobius\Components\Collections;
 
 use Mobius\Components\Route;
 use Mobius\Interfaces\Http\Request;
-use Mobius\Components\Http\Responses\BasicResponse;
 
 /**
  * A collection of routes
@@ -24,22 +23,19 @@ class RouteCollection
 	}
 
 	/**
-	 * Handle a request
+	 * Return a controller for a given request
 	 *
 	 * @param ControllerCollection $controllers The available controllers for the request
 	 * @param Request $request The request to handle
-	 * @return Response A response to send to the client
+	 * @return Controller An instance of a controller
 	 */
-	public function handle(ControllerCollection $controllers, Request $request) {
+	public function getController(ControllerCollection $controllers, Request $request) {
 		foreach ($this->routes as $route) {
 			if ($request->getMethod() === $route->method && $request->getPath() === $route->path && $controllers->has($route->controller)) {
-				return $controllers->get($route->controller)->run($request);
+				return $controllers->get($route->controller);
 			}
 		}
 
-		$response = new BasicResponse('Page not found');
-		$response->setCode(404);
-		$response->setContentType('text/plain');
-		return $response;
+		return NULL;
 	}
 }
