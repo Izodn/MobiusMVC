@@ -23,4 +23,19 @@ interface Request
 	 * Get the request path
 	 */
 	public function getPath();
+
+	/**
+	 * Store a variable
+	 *
+	 * @param string $key The key to store the variable as
+	 * @param any $variable The variable to store
+	 */
+	public function set($key, $variable);
+
+	/**
+	 * Get a stored variable
+	 *
+	 * @param string $key The key containing the variable
+	 */
+	public function get($key);
 }

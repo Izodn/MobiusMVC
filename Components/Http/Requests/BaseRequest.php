@@ -7,6 +7,7 @@ abstract class BaseRequest implements Request
 {
 	private $method;
 	private $path;
+	private $variables = [];
 
 	/**
 	 * Create the BaseRequest
@@ -17,6 +18,10 @@ abstract class BaseRequest implements Request
 	public function __construct($method, $path) {
 		$this->method = $method;
 		$this->path = $path;
+
+		foreach ($_REQUEST as $key => $variable) {
+			$this->set($key, $variable);
+		}
 	}
 
 	/**
@@ -35,5 +40,28 @@ abstract class BaseRequest implements Request
 	 */
 	public function getPath() {
 		return $this->path;
+	}
+
+	/**
+	 * Store a variable
+	 *
+	 * @param string $key The key to store the variable as
+	 * @param any $variable The variable to store
+	 */
+	public function set($key, $variable) {
+		$this->variables[$key] = $variable;
+	}
+
+	/**
+	 * Get a stored variable
+	 *
+	 * @param string $key The key containing the variable
+	 * @return any The requested variable, null if non-existent
+	 */
+	public function get($key) {
+		if (isset($this->variables[$key])) {
+			return $this->variables[$key];
+		}
+		return NULL;
 	}
 }
