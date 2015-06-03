@@ -1,5 +1,5 @@
 <?php
-namespace Mobius\Components\Router;
+namespace Mobius\Components;
 
 use Mobius\Interfaces\Controller;
 
@@ -15,10 +15,9 @@ class Route
 	/**
 	 * @param string $method A HTTP method (GET, POST, OPTION, etc)
 	 * @param string $path The url path to access the controller (i.e. "/about-us")
-	 * @param Controller $controller The controller to handle the request
-	 * @todo __construct() shouldn't take a Controller, it should take a "path" to one
+	 * @param string $controller The controller to handle the request
 	 */
-	public function __construct($method, $path, Controller $controller) {
+	public function __construct($method, $path, $controller) {
 		$this->method = $method;
 		$this->path = $path;
 		$this->controller = $controller;

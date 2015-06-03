@@ -8,7 +8,9 @@ require_once __DIR__ . '/Components/Http/Requests/BasicRequest.php';
 require_once __DIR__ . '/Components/Http/Responses/BaseResponse.php';
 require_once __DIR__ . '/Components/Http/Responses/BasicResponse.php';
 require_once __DIR__ . '/Components/Http/Responses/JsonResponse.php';
-require_once __DIR__ . '/Components/Router/Route.php';
-require_once __DIR__ . '/Components/Router/RouteCollection.php';
+require_once __DIR__ . '/Components/Route.php';
+
+require_once __DIR__ . '/Components/Collections/RouteCollection.php';
+require_once __DIR__ . '/Components/Collections/ControllerCollection.php';
 
 require_once __DIR__ . '/Application.php';

@@ -1,7 +1,7 @@
 <?php
-namespace Mobius\Components\Router;
+namespace Mobius\Components\Collections;
 
-use Mobius\Components\Router\Route;
+use Mobius\Components\Route;
 use Mobius\Interfaces\Http\Request;
 use Mobius\Components\Http\Responses\BasicResponse;
 
@@ -26,13 +26,14 @@ class RouteCollection
 	/**
 	 * Handle a request
 	 *
+	 * @param ControllerCollection $controllers The available controllers for the request
 	 * @param Request $request The request to handle
 	 * @return Response A response to send to the client
 	 */
-	public function handle(Request $request) {
+	public function handle(ControllerCollection $controllers, Request $request) {
 		foreach ($this->routes as $route) {
-			if ($request->getMethod() === $route->method && $request->getPath() === $route->path) {
-				return $route->controller->run($request);
+			if ($request->getMethod() === $route->method && $request->getPath() === $route->path && $controllers->has($route->controller)) {
+				return $controllers->get($route->controller)->run($request);
 			}
 		}
 
