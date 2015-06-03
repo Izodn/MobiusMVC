@@ -19,6 +19,7 @@ class View
 		if (is_readable($path) && !is_dir($path)) {
 			$file = fopen($path, 'r');
 			$this->raw = fread($file, filesize($path));
+			fclose($file);
 		}
 	}
 
@@ -27,13 +28,29 @@ class View
 	 *
 	 * @param Response $response The response to modify
 	 * @param Model $model The data structure to set in the view
+	 * @todo This should throw a file not found exception
 	 */
 	public function modifyResponse(Response $response, Model $model) {
 		$responseData = $this->raw;
+
+		//Include files
+		while (preg_match('/(\%include )(.*?)(%)/', $responseData, $matches)) {
+			$fullPath = $_SERVER['DOCUMENT_ROOT'] . $matches[2];
+			if (is_readable($fullPath) && !is_dir($path)) {
+				$file = fopen($fullPath, 'r');
+				$responseData = preg_replace('_%include ' . $matches[2] . '%_', fread($file, filesize($fullPath)), $responseData);
+				fclose($file);
+			} else {
+				break;
+			}
+		}
+
+		//Populate variables
 		$modelData = $model->getAll();
 		foreach ($modelData as $key => $value) {
 			$responseData = preg_replace('/\%' . $key . '\%/', $value, $responseData);
 		}
+
 		$response->setData($responseData);
 		return $response;
 	}
