@@ -9,11 +9,6 @@ use Mobius\Interfaces\Http\Request;
 interface Controller
 {
 	/**
-	 * Initialize the controller
-	 */
-	public function __construct();
-
-	/**
 	 * Run the controller. This is the main entry point for controllers
 	 *
 	 * @param Request $request The request to handle
