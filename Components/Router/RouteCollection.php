@@ -32,7 +32,7 @@ class RouteCollection
 	public function handle(Request $request) {
 		foreach ($this->routes as $route) {
 			if ($request->getMethod() === $route->method && $request->getPath() === $route->path) {
-				return $route->controller->run();
+				return $route->controller->run($request);
 			}
 		}
 
