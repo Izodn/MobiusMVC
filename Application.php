@@ -79,7 +79,7 @@ class Application
 		if ($controller !== NULL) {
 			$response = $controller->run($request);
 			if ($this->views->has($controller->view)) {
-				$response = $this->views->get($controller->view)->modifyResponse($response, $controller);
+				$response = $this->views->get($controller->view)->modifyResponse($response, $controller->model);
 			}
 		} else {
 			$response->setData('Page not found');

@@ -10,6 +10,8 @@ require_once __DIR__ . '/Components/Http/Responses/BasicResponse.php';
 require_once __DIR__ . '/Components/Http/Responses/JsonResponse.php';
 require_once __DIR__ . '/Components/Route.php';
 require_once __DIR__ . '/Components/View.php';
+require_once __DIR__ . '/Components/Model.php';
+require_once __DIR__ . '/Components/Controller.php';
 
 require_once __DIR__ . '/Components/Collections/RouteCollection.php';
 require_once __DIR__ . '/Components/Collections/ControllerCollection.php';

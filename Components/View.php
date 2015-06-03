@@ -9,7 +9,7 @@ use Mobius\Interfaces\Http\Response;
  */
 class View
 {
-	public $raw;
+	private $raw;
 
 	/**
 	 * @param string $path The path of the view to create
@@ -26,11 +26,15 @@ class View
 	 * Modify a response object before it's given to the client
 	 *
 	 * @param Response $response The response to modify
-	 * @param Controller $controller (should be model)
-	 * @todo We should pass a model containing view data
+	 * @param Model $model The data structure to set in the view
 	 */
-	public function modifyResponse(Response $response, Controller $controller) {
-		$response->setData($this->raw);
+	public function modifyResponse(Response $response, Model $model) {
+		$responseData = $this->raw;
+		$modelData = $model->getAll();
+		foreach ($modelData as $key => $value) {
+			$responseData = preg_replace('/\%' . $key . '\%/', $value, $responseData);
+		}
+		$response->setData($responseData);
 		return $response;
 	}
 }
