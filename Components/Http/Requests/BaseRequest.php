@@ -8,19 +8,13 @@ abstract class BaseRequest implements Request
 	private $method;
 	private $path;
 	private $body;
+	private $clientIP;
 	private $variables = [];
 
 	/**
 	 * Create the BaseRequest
-	 *
-	 * @param string $method The HTTP method of the request
-	 * @param string $path The url path of the request
-	 * @param string $body The body of the request
 	 */
-	public function __construct($method, $path, $body = '') {
-		$this->method = $method;
-		$this->path = $path;
-		$this->body = $body;
+	public function __construct() {
 
 		foreach ($_REQUEST as $key => $variable) {
 			$this->set($key, $variable);
@@ -50,9 +44,61 @@ abstract class BaseRequest implements Request
 	 *
 	 * @return string The body of the request
 	 */
-	public function getBody()
-	{
+	public function getBody() {
 		return $this->body;
+	}
+
+	/**
+	 * Get the IP of the requester
+	 *
+	 * @return string The IP of the requester
+	 */
+	public function getClientIP() {
+		return $this->clientIP;
+	}
+
+	/**
+	 * Set the request method
+	 *
+	 * @param string $newMethod The HTTP method of the request
+	 * @return self
+	 */
+	public function setMethod($newMethod) {
+		$this->method = $newMethod;
+		return $this;
+	}
+
+	/**
+	 * Set the request path
+	 *
+	 * @param string $newPath The url path of the request
+	 * @return self
+	 */
+	public function setPath($newPath) {
+		$this->path = $newPath;
+		return $this;
+	}
+
+	/**
+	 * Set the body of the request
+	 *
+	 * @param string $newBody The body of the request
+	 * @return self
+	 */
+	public function setBody($newBody) {
+		$this->body = $newBody;
+		return $this;
+	}
+
+	/**
+	 * Set the IP of the requester
+	 *
+	 * @param string $newClientIP The IP of the requester
+	 * @return self
+	 */
+	public function setClientIP($newCleintIP) {
+		$this->clientIP = $newCleintIP;
+		return $this;
 	}
 
 	/**

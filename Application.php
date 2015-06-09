@@ -26,7 +26,13 @@ class Application
 	public function generateRequest() {
 		$method = $_SERVER['REQUEST_METHOD'];
 		$path = preg_split("/\/$/", preg_split("/\?/", $_SERVER['REQUEST_URI'])[0])[0];
-		return new BasicRequest($method, $path, file_get_contents('php://input'));
+		$request = new BasicRequest();
+		$request
+			->setMethod($method)
+			->setPath($path)
+			->setBody(file_get_contents('php://input'))
+			->setClientIP($_SERVER['REMOTE_ADDR']);
+		return $request;
 	}
 
 	/**

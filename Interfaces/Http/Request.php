@@ -8,11 +8,8 @@ interface Request
 {
 	/**
 	 * Create the Request
-	 *
-	 * @param string $method The HTTP method of the request
-	 * @param string $path The url path of the request
 	 */
-	public function __construct($method, $path);
+	public function __construct();
 
 	/**
 	 * Get the request method
@@ -28,6 +25,39 @@ interface Request
 	 * Get the body of the request
 	 */
 	public function getBody();
+
+	/**
+	 * Get the IP of the requester
+	 */
+	public function getClientIP();
+
+	/**
+	 * Set the request method
+	 *
+	 * @param string $newMethod The HTTP method of the request
+	 */
+	public function setMethod($newMethod);
+
+	/**
+	 * Set the request path
+	 *
+	 * @param string $newPath The url path of the request
+	 */
+	public function setPath($newPath);
+
+	/**
+	 * Set the body of the request
+	 *
+	 * @param string $newBody The body of the request
+	 */
+	public function setBody($newBody);
+
+	/**
+	 * Set the IP of the requester
+	 *
+	 * @param string $newClientIP The IP of the requester
+	 */
+	public function setClientIP($newCleintIP);
 
 	/**
 	 * Store a variable
