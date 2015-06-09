@@ -25,6 +25,11 @@ interface Request
 	public function getPath();
 
 	/**
+	 * Get the body of the request
+	 */
+	public function getBody();
+
+	/**
 	 * Store a variable
 	 *
 	 * @param string $key The key to store the variable as

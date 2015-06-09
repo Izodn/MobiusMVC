@@ -26,7 +26,7 @@ class Application
 	public function generateRequest() {
 		$method = $_SERVER['REQUEST_METHOD'];
 		$path = preg_split("/\/$/", preg_split("/\?/", $_SERVER['REQUEST_URI'])[0])[0];
-		return new BasicRequest($method, $path);
+		return new BasicRequest($method, $path, file_get_contents('php://input'));
 	}
 
 	/**

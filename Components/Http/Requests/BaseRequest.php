@@ -7,6 +7,7 @@ abstract class BaseRequest implements Request
 {
 	private $method;
 	private $path;
+	private $body;
 	private $variables = [];
 
 	/**
@@ -14,10 +15,12 @@ abstract class BaseRequest implements Request
 	 *
 	 * @param string $method The HTTP method of the request
 	 * @param string $path The url path of the request
+	 * @param string $body The body of the request
 	 */
-	public function __construct($method, $path) {
+	public function __construct($method, $path, $body = '') {
 		$this->method = $method;
 		$this->path = $path;
+		$this->body = $body;
 
 		foreach ($_REQUEST as $key => $variable) {
 			$this->set($key, $variable);
@@ -40,6 +43,16 @@ abstract class BaseRequest implements Request
 	 */
 	public function getPath() {
 		return $this->path;
+	}
+
+	/**
+	 * Get the body of the request
+	 *
+	 * @return string The body of the request
+	 */
+	public function getBody()
+	{
+		return $this->body;
 	}
 
 	/**
