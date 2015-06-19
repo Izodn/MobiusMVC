@@ -7,14 +7,16 @@ class BaseResponse implements Response
 {
 	private $code;
 	private $contentType;
-	private $text;
+	private $data;
 
 	/**
 	 * Create the Response
 	 *
 	 * @param any $data The data to respond with
 	 */
-	public function __construct($data) {}
+	public function __construct($data) {
+		$this->data = $data;
+	}
 
 	/**
 	 * Set the response code
