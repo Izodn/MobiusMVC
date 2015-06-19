@@ -80,9 +80,9 @@ class Application
 	 */
 	public function run() {
 		$request = $this->generateRequest();
-		$response = new BasicResponse(NULL);
+		$response = new BasicResponse(null);
 		$controller = $this->routes->getController($this->controllers, $request);
-		if ($controller !== NULL) {
+		if ($controller !== null) {
 			$response = $controller->run($request);
 			if ($this->views->has($controller->getView())) {
 				$response = $this->views->get($controller->getView())->modifyResponse($response, $controller->getModel());

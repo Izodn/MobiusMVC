@@ -34,6 +34,6 @@ class RouteCollection
 			}
 		}
 
-		return NULL;
+		return null;
 	}
 }

@@ -15,7 +15,7 @@ class View
 	 * @param string $path The path of the view to create
 	 * @todo We need to properly handle the exception when the file doens't exist
 	 */
-	public function __construct($path = NULL) {
+	public function __construct($path = null) {
 		if (is_readable($path) && !is_dir($path)) {
 			$file = fopen($path, 'r');
 			$this->raw = fread($file, filesize($path));

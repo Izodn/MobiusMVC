@@ -29,7 +29,7 @@ abstract class Controller implements ControllerInterface
 	 * @return Response An instance of Response
 	 */
 	public function run(Request $request) {
-		return new BasicResponse(NULL);
+		return new BasicResponse(null);
 	}
 
 	/**

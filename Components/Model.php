@@ -22,10 +22,7 @@ class Model
 	 * @return bool Whether or not the key exists
 	 */
 	public function has($key) {
-		if (isset($this->data[$key])) {
-			return true;
-		}
-		return false;
+		return isset($this->data[$key]);
 	}
 
 	/**
@@ -38,7 +35,7 @@ class Model
 		if ($this->has($key)) {
 			return $this->data[$key];
 		}
-		return NULL;
+		return null;
 	}
 
 	/**

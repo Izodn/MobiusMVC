@@ -121,6 +121,6 @@ abstract class BaseRequest implements Request
 		if (isset($this->variables[$key])) {
 			return $this->variables[$key];
 		}
-		return NULL;
+		return null;
 	}
 }
