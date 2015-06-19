@@ -3,7 +3,7 @@ namespace Mobius\Components\Http\Requests;
 
 use Mobius\Interfaces\Http\Request;
 
-abstract class BaseRequest implements Request
+class BaseRequest implements Request
 {
 	private $method;
 	private $path;

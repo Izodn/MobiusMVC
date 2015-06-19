@@ -9,7 +9,7 @@ use Mobius\Components\Http\Responses\BasicResponse;
 /**
  * An extendable base for Controller
  */
-abstract class Controller implements ControllerInterface
+class Controller implements ControllerInterface
 {
 	protected $view;
 	protected $model;

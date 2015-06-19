@@ -3,7 +3,7 @@ namespace Mobius\Components\Http\Responses;
 
 use Mobius\Interfaces\Http\Response;
 
-abstract class BaseResponse implements Response
+class BaseResponse implements Response
 {
 	private $code;
 	private $contentType;
