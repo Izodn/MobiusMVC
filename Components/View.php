@@ -36,9 +36,9 @@ class View
 		//Include files
 		while (preg_match('/(\%include )(.*?)(%)/', $responseData, $matches)) {
 			$fullPath = $_SERVER['DOCUMENT_ROOT'] . $matches[2];
-			if (is_readable($fullPath) && !is_dir($path)) {
+			if (is_readable($fullPath) && !is_dir($fullPath)) {
 				$file = fopen($fullPath, 'r');
-				$responseData = preg_replace('_%include ' . $matches[2] . '%_', fread($file, filesize($fullPath)), $responseData);
+				$responseData = str_replace('%include ' . $matches[2] . '%', fread($file, filesize($fullPath)), $responseData);
 				fclose($file);
 			} else {
 				break;
@@ -48,7 +48,7 @@ class View
 		//Populate variables
 		$modelData = $model->getAll();
 		foreach ($modelData as $key => $value) {
-			$responseData = preg_replace('/\%' . $key . '\%/', $value, $responseData);
+			$responseData = str_replace('%' . $key . '%', $value, $responseData);
 		}
 
 		$response->setData($responseData);
