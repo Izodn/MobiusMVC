@@ -11,8 +11,8 @@ use Mobius\Components\Http\Responses\BasicResponse;
  */
 abstract class Controller implements ControllerInterface
 {
-	private $view;
-	public $model;
+	protected $view;
+	protected $model;
 
 	/**
 	 * Initialize the object and set view and model
@@ -30,5 +30,23 @@ abstract class Controller implements ControllerInterface
 	 */
 	public function run(Request $request) {
 		return new BasicResponse(NULL);
+	}
+
+	/**
+	 * Get the view associated with this controller
+	 *
+	 * @return string The name of then view
+	 */
+	public function getView() {
+		return $this->view;
+	}
+
+	/**
+	 * Get the model associated with this controller
+	 *
+	 * @return Model This Controller's Model
+	 */
+	public function getModel() {
+		return $this->model;
 	}
 }

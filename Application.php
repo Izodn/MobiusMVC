@@ -84,8 +84,8 @@ class Application
 		$controller = $this->routes->getController($this->controllers, $request);
 		if ($controller !== NULL) {
 			$response = $controller->run($request);
-			if ($this->views->has($controller->view)) {
-				$response = $this->views->get($controller->view)->modifyResponse($response, $controller->model);
+			if ($this->views->has($controller->getView())) {
+				$response = $this->views->get($controller->getView())->modifyResponse($response, $controller->getModel());
 			}
 		} else {
 			$response->setData('Page not found');
