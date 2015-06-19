@@ -27,10 +27,7 @@ class ViewCollection
 	 * @return bool True if the specified name exists
 	 */
 	public function has($name) {
-		if (isset($this->views[$name])) {
-			return true;
-		}
-		return false;
+		return isset($this->views[$name]);
 	}
 
 	/**

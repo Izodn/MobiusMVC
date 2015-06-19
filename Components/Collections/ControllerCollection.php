@@ -27,10 +27,7 @@ class ControllerCollection
 	 * @return bool True if the specified name exists
 	 */
 	public function has($name) {
-		if (isset($this->controllers[$name])) {
-			return true;
-		}
-		return false;
+		return isset($this->controllers[$name]);
 	}
 
 	/**
