@@ -11,8 +11,6 @@ class RouteCollection
 {
 	private $routes = [];
 
-	public function __construct() {}
-
 	/**
 	 * Add a route to the collection
 	 *

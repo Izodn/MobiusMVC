@@ -10,8 +10,6 @@ class ViewCollection
 {
 	private $views = [];
 
-	public function __construct() {}
-
 	/**
 	 * Add a view to the collection
 	 *

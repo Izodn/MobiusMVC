@@ -10,8 +10,6 @@ class ControllerCollection
 {
 	private $controllers = [];
 
-	public function __construct() {}
-
 	/**
 	 * Add a controller to the collection
 	 *

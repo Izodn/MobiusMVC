@@ -5,8 +5,6 @@ class Model
 {
 	private $data = [];
 
-	public function __construct() {}
-
 	/**
 	 * Set the value of a given key
 	 *
