@@ -1,8 +1,6 @@
 <?php
 namespace Mobius\Components;
 
-use Mobius\Interfaces\Controller;
-
 /**
  * A route between a request and method, and a controller to handle the request
  */

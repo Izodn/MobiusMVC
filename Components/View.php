@@ -1,8 +1,6 @@
 <?php
 namespace Mobius\Components;
 
-use Mobius\Interfaces\Controller;
-
 /**
  * A view's backend
  */
