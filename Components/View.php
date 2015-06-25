@@ -2,7 +2,6 @@
 namespace Mobius\Components;
 
 use Mobius\Interfaces\Controller;
-use Mobius\Interfaces\Http\Response;
 
 /**
  * A view's backend
@@ -24,13 +23,13 @@ class View
 	}
 
 	/**
-	 * Modify a response object before it's given to the client
+	 * Generate response text given a model
 	 *
-	 * @param Response $response The response to modify
 	 * @param Model $model The data structure to set in the view
+	 * @return string The text of a rendered view
 	 * @todo This should throw a file not found exception
 	 */
-	public function modifyResponse(Response $response, Model $model) {
+	public function render(Model $model) {
 		$responseData = $this->raw;
 
 		//Include files
@@ -51,7 +50,6 @@ class View
 			$responseData = str_replace('%' . $key . '%', $value, $responseData);
 		}
 
-		$response->setData($responseData);
-		return $response;
+		return $responseData;
 	}
 }

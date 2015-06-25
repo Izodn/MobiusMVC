@@ -15,6 +15,5 @@ require_once __DIR__ . '/Components/Controller.php';
 
 require_once __DIR__ . '/Components/Collections/RouteCollection.php';
 require_once __DIR__ . '/Components/Collections/ControllerCollection.php';
-require_once __DIR__ . '/Components/Collections/ViewCollection.php';
 
 require_once __DIR__ . '/Application.php';

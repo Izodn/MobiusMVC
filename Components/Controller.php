@@ -2,6 +2,7 @@
 namespace Mobius\Components;
 
 use Mobius\Interfaces\Controller as ControllerInterface;
+use Mobius\Components\View;
 use Mobius\Components\Model;
 use Mobius\Interfaces\Http\Request;
 use Mobius\Components\Http\Responses\BasicResponse;
@@ -16,9 +17,11 @@ class Controller implements ControllerInterface
 
 	/**
 	 * Initialize the object and set view and model
+	 *
+	 * @param View $view The view associated with this controller
 	 */
-	public function __construct() {
-		$this->view = '';
+	public function __construct(View $view = null) {
+		$this->view = $view;
 		$this->model = new Model();
 	}
 

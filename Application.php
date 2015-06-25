@@ -3,7 +3,6 @@ namespace Mobius;
 
 use Mobius\Components\Collections\RouteCollection;
 use Mobius\Components\Collections\ControllerCollection;
-use Mobius\Components\Collections\ViewCollection;
 use Mobius\Components\Http\Requests\BasicRequest;
 use Mobius\Interfaces\Http\Response;
 use Mobius\Components\Http\Responses\BasicResponse;
@@ -55,15 +54,6 @@ class Application
 	}
 
 	/**
-	 * Set the application views
-	 *
-	 * @param ViewCollection $views The views to set
-	 */
-	public function registerViews(ViewCollection $views) {
-		$this->views = $views;
-	}
-
-	/**
 	 * Send a response to the client
 	 *
 	 * @param Response $response The response to send
@@ -84,9 +74,6 @@ class Application
 		$controller = $this->routes->getController($this->controllers, $request);
 		if ($controller !== null) {
 			$response = $controller->run($request);
-			if ($this->views->has($controller->getView())) {
-				$response = $this->views->get($controller->getView())->modifyResponse($response, $controller->getModel());
-			}
 		} else {
 			$response->setData('Page not found');
 			$response->setCode(404);
