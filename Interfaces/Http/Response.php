@@ -21,11 +21,12 @@ interface Response
 	public function setCode($code);
 
 	/**
-	 * Set the response Content-Type
+	 * Set a response header
 	 *
-	 * @param string $contentType The Content-Type to respond with
+	 * @param string $header The name of the header
+	 * @param string $value The value of the header
 	 */
-	public function setContentType($contentType);
+	public function setHeader($header, $value);
 
 	/**
 	 * Set the response data
@@ -42,11 +43,11 @@ interface Response
 	public function getCode();
 
 	/**
-	 * Get the response Content-Type
+	 * Get a response header
 	 *
-	 * @return string The Content-Type to respond with
+	 * @return string The value of the header
 	 */
-	public function getContentType();
+	public function getHeader($header);
 
 	/**
 	 * Get the response data
@@ -54,4 +55,11 @@ interface Response
 	 * @return any The data to respond with
 	 */
 	public function getData();
+
+	/**
+	 * Get all response headers
+	 *
+	 * @return array The response headers
+	 */
+	public function getHeaders();
 }

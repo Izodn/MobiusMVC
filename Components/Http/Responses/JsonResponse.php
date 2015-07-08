@@ -12,7 +12,7 @@ class JsonResponse extends BaseResponse
 	 */
 	public function __construct($data) {
 		$this->setCode(200);
-		$this->setContentType('application/json');
+		$this->setHeader('Content-Type', 'application/json');
 		$this->setData(json_encode($data));
 	}
 }

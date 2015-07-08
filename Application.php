@@ -60,7 +60,9 @@ class Application
 	 */
 	public function respond(Response $response) {
 		http_response_code($response->getCode());
-		header("Content-Type:" . $response->getContentType());
+		foreach ($response->getHeaders() as $header => $value) {
+			header($header . ': ' . $value);
+		}
 		echo $response->getData();
 	}
 
@@ -77,7 +79,7 @@ class Application
 		} else {
 			$response->setData('Page not found');
 			$response->setCode(404);
-			$response->setContentType('text/plain');
+			$response->setHeader('Content-Type', 'text/plain');
 		}
 		$this->respond($response);
 	}

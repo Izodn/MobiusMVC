@@ -6,7 +6,7 @@ use Mobius\Interfaces\Http\Response;
 class BaseResponse implements Response
 {
 	private $code;
-	private $contentType;
+	private $headers;
 	private $data;
 
 	/**
@@ -16,6 +16,7 @@ class BaseResponse implements Response
 	 */
 	public function __construct($data) {
 		$this->data = $data;
+		$this->headers = [];
 	}
 
 	/**
@@ -28,12 +29,13 @@ class BaseResponse implements Response
 	}
 
 	/**
-	 * Set the response Content-Type
+	 * Set a response header
 	 *
-	 * @param string $contentType The Content-Type to respond with
+	 * @param string $header The name of the header
+	 * @param string $value The value of the header
 	 */
-	public function setContentType($contentType) {
-		$this->contentType = $contentType;
+	public function setHeader($header, $value) {
+		$this->headers[$header] = $value;
 	}
 
 	/**
@@ -55,12 +57,13 @@ class BaseResponse implements Response
 	}
 
 	/**
-	 * Get the response Content-Type
+	 * Get a response header
 	 *
-	 * @return string The Content-Type to respond with
+	 * @param string $header The name of the header
+	 * @return string The value of the header
 	 */
-	public function getContentType() {
-		return $this->contentType;
+	public function getHeader($header) {
+		return $this->headers[$header];
 	}
 
 	/**
@@ -70,5 +73,14 @@ class BaseResponse implements Response
 	 */
 	public function getData() {
 		return $this->data;
+	}
+
+	/**
+	 * Get all response headers
+	 *
+	 * @return array The response headers
+	 */
+	public function getHeaders() {
+		return $this->headers;
 	}
 }

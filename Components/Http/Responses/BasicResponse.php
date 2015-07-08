@@ -12,7 +12,7 @@ class BasicResponse extends BaseResponse
 	 */
 	public function __construct($text) {
 		$this->setCode(200);
-		$this->setContentType('text/html');
+		$this->setHeader('Content-Type', 'text/html');
 		$this->setData($text);
 	}
 }
