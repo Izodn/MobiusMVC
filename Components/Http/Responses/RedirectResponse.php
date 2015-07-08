@@ -11,7 +11,7 @@ class RedirectResponse extends BaseResponse
 	 * @param array $location The address to redirect to
 	 */
 	public function __construct($location) {
-		$this->setCode(307);
+		$this->setCode(301);
 		$this->setHeader('Location', $location);
 	}
 }
