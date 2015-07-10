@@ -14,6 +14,7 @@ class Controller implements ControllerInterface
 {
 	protected $view;
 	protected $model;
+	protected $values;
 
 	/**
 	 * Initialize the object and set view and model
@@ -51,5 +52,27 @@ class Controller implements ControllerInterface
 	 */
 	public function getModel() {
 		return $this->model;
+	}
+
+	/**
+	 * Get a stored controller value
+	 *
+	 * @param string $name The name of the value to get
+	 */
+	public function get($name) {
+		if (isset($this->values[$name])) {
+			return $this->values[$name];
+		}
+		return null;
+	}
+
+	/**
+	 * Store a controller value
+	 *
+	 * @param string $name The name of the value to set
+	 * @param any $value The value to set
+	 */
+	public function set($name, $value) {
+		$this->values[$name] = $value;
 	}
 }
