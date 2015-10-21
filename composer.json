@@ -1,0 +1,21 @@
+{
+    "name": "mobius/mobiusmvc",
+    "description": "A lightweight and extensible model-view-controller library.",
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "homepage": "https://github.com/Izodn/MobiusMVC",
+    "license": "Apache 2.0",
+    "authors": [
+        {
+            "name": "Brandon Burton",
+            "email": "izodn0@gmail.com",
+            "homepage": "http://brandonbeta.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Mobius\\": "src/"
+        }
+    }
+}
